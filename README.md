@@ -1,16 +1,15 @@
-### Hi there 👋
+# DiffuseMorph
 
-<!--
-**DiffuseMorph/DiffuseMorph** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+Implementation
+===============
+A PyTorch implementation of deep-learning-based registration.
+* Requirements
+  * OS : Ubuntu / Windows
+  * Python 3.6
+  * PyTorch 1.4.0
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Testing
+===============
+* main.py which is handled by ./scripts/test.sh
+* You can run the code by running sh ./scripts/test.sh
