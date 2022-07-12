@@ -81,7 +81,14 @@ def init_weights(net, init_type='kaiming', scale=1, std=0.02):
 # Generator
 def define_G(opt):
     model_opt = opt['model']
-    from .ddpm_modules import diffusion, unet
+    if model_opt['netDim'] == 2:
+        from .diffusion_net_2D import diffusion, unet
+        from .deformation_net_2D import registUnetBlock
+    elif model_opt['netDim'] == 3:
+        from .diffusion_net_3D import diffusion, unet
+        from .deformation_net_3D import registUnetBlock
+    else:
+        raise('model dimension error')
 
     model_score = unet.UNet(
         in_channel=model_opt['unet']['in_channel'],
@@ -94,18 +101,17 @@ def define_G(opt):
         image_size=model_opt['diffusion']['image_size']
     )
 
-    from .deformation_net import registUnetBlock
     model_field = registUnetBlock(model_opt['field']['in_channel'],
                            model_opt['field']['encoder_nc'],
                            model_opt['field']['decoder_nc'])
-    # model_field = None
+
     netG = diffusion.GaussianDiffusion(
         model_score, model_field,
-        image_size=model_opt['diffusion']['image_size'],
         channels=model_opt['diffusion']['channels'],
         loss_type='l2',    # L1 or L2
         conditional=model_opt['diffusion']['conditional'],
-        schedule_opt=model_opt['beta_schedule']['train']
+        schedule_opt=model_opt['beta_schedule']['train'],
+        loss_lambda=model_opt['loss_lambda']
     )
     if opt['phase'] == 'train':
         load_path = opt['path']['resume_state']

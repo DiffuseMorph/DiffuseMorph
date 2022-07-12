@@ -4,10 +4,10 @@ import numpy as np
 import os
 import collections
 import scipy.misc
+from PIL import Image
 
 def save_image(image_numpy, image_path):
-    # image_pil = Image.fromarray(image_numpy)
-    image_pil = scipy.misc.toimage(image_numpy)
+    image_pil = Image.fromarray(image_numpy.astype('uint8'))
     image_pil.save(image_path)
 
 def info(object, spacing=10, collapse=1):

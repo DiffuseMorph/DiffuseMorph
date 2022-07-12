@@ -1,0 +1,81 @@
+{
+    "name": "DiffuseMorph_2D",
+    "phase": "train",
+    "gpu_ids": [
+        0
+    ],
+    "display_port": 8097,
+    "path": {
+        "log": "logs",
+        "tb_logger": "tb_logger",
+        "results": "results",
+        "checkpoint": "checkpoint",
+        "resume_state": null
+    },
+    "datasets": {
+        "centered": true,
+        "train": {
+            "name": "Face",
+            "dataroot": "./toy_sample/",
+            "batch_size": 1,
+            "num_workers": 8,
+            "use_shuffle": true
+        }
+    },
+    "model": {
+        "netDim": 2,
+        "which_model_G": "ddpm",
+        "finetune_norm": false,
+        "unet": {
+            "in_channel": 3,
+            "out_channel": 1,
+            "inner_channel": 64,
+            "channel_multiplier": [
+                1,
+                2,
+                4,
+                4
+            ],
+            "attn_res": [
+                8
+            ],
+            "res_blocks": 1,
+            "dropout": 0
+        },
+        "beta_schedule": {
+            "train": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            },
+            "test": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            }
+        },
+        "diffusion": {
+            "image_size": 128,
+            "channels": 3,
+            "conditional": true
+        },
+        "field": {
+            "in_channel": 2,
+            "encoder_nc": [64,128,256,512,1024],
+            "decoder_nc": [1024,512,256,128,64,2]
+        },
+        "loss_lambda": 2
+    },
+    "train": {
+        "n_epoch": 40,
+        "val_freq": 1000,
+        "save_checkpoint_epoch": 1,
+        "print_freq": 1,
+        "optimizer": {
+            "type": "adam",
+            "lr": 5e-6
+        }
+    }
+}

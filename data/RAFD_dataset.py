@@ -1,5 +1,5 @@
 from torch.utils.data import Dataset
-import data.util as Util
+import data.util_2D as Util
 import os
 import numpy as np
 from skimage import io
@@ -31,4 +31,4 @@ class RAFDDataset(Dataset):
 
         [data, label] = Util.transform_augment([data, label], split=self.split, min_max=(-1, 1))
 
-        return {'M': data, 'F': label, 'MC': dataX_RGB, 'FC': dataY_RGB, 'P':fileInfo, 'Index': index}
+        return {'M': data, 'F': label, 'MC': dataX_RGB, 'FC': dataY_RGB, 'nS': 7, 'P':fileInfo, 'Index': index}
