@@ -40,10 +40,3 @@ To test the trained our model for 3D image registration, run:
 ```eval
 python3 main_3D.py -p test -c config/diffuseMorph_test_3D.json
 ```
-
-## Pre-trained Models
-
-You can download our pretrained model for 2D image registration [here](https://drive.google.com/drive/folders/1-caDkoMI_u7sNJeIGWrlxSQWdx2hKCvU?usp=sharing).
-Then, you can test the model by saving the pretrained weights in the directory ./checkpoints.
-To brifely test our method given the pretrained model, we provided the toy example in the directory './toy_sample'.
-
