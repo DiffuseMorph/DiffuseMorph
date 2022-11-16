@@ -40,3 +40,16 @@ To test the trained our model for 3D image registration, run:
 ```eval
 python3 main_3D.py -p test -c config/diffuseMorph_test_3D.json
 ```
+
+## Citation
+
+```    
+@inproceedings{kim2022diffusemorph,
+  title={DiffuseMorph: Unsupervised Deformable Image Registration Using Diffusion Model},
+  author={Kim, Boah and Han, Inhwa and Ye, Jong Chul},
+  booktitle={European Conference on Computer Vision},
+  pages={347--364},
+  year={2022},
+  organization={Springer}
+}
+```
