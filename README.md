@@ -1,7 +1,10 @@
-# DiffuseMorph: Unsupervised Deformable Image Registration Using Diffusion Model
-
-This repository is the official implementation of "DiffuseMorph: Unsupervised Deformable Image Registration Using Diffusion Model".
 <img src="./img/representative.png">
+
+# DiffuseMorph
+
+This repository is the official implementation of "DiffuseMorph: Unsupervised Deformable Image Registration Using Diffusion Model" which is presented at ECCV 2022.
+
+[[ECCV paper](https://link.springer.com/chapter/10.1007/978-3-031-19821-2_20)]
 
 ## Requirements
   * OS : Ubuntu
